@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.3//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+    <mapper namespace="com.netease.course.dao.PersonDao">
+          <resultMap id="PersonResultMap" type="com.netease.course.meta.Person" >
+		    <result column="id" 		property="id" 		jdbcType="INTEGER" />
+		    <result column="userName" 	property="username" jdbcType="VARCHAR" />
+		    <result column="password" 	property="password" 	jdbcType="VARCHAR" />
+		    <result column="nickName" 	property="nickname" 	jdbcType="VARCHAR" />
+		    <result column="userType" 	property="usertype" 	jdbcType="INTEGER" />
+		  </resultMap>
+        
+      <select id="getPersonInfo" parameterType="java.lang.String" resultMap="PersonResultMap" >
+      	select * from person where userName=#{userName}
+      </select>
+      
+      <select id="getPassword"   parameterType="java.lang.String" resultType="java.lang.String" >
+      	select password from person where userName=#{userName}
+      </select>
+      
+      
+     
+    </mapper>
